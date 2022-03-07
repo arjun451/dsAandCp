@@ -1,0 +1,177 @@
+#include<iostream>
+using namespace std;
+#include"linkListClass.h"
+void print(Node *h)
+{
+    while(h->next!=NULL)
+    {
+        cout<<h->data<<" ";
+        h = h->next;
+    }
+    cout<<h->data<<endl;
+}
+Node *takeInput()
+{
+    int data;
+    cin>>data;
+    Node *head = NULL;
+    Node *Temp = head;
+    while(data!=-1)
+    {
+       
+        Node *newNode = new Node(data);
+        if(head==NULL)
+        {
+            head = newNode;
+            Temp = head;
+        }
+        else
+        {
+         Temp->next= newNode;
+         Temp=Temp->next;
+        }
+        cin>>data;
+    }
+    return head;
+}
+Node *mergeLL(Node *h1,Node *h2)
+{
+    Node *h;
+    if(h1->data>=h2->data)
+    {
+        h = h2;
+        h2 = h2->next;
+    }
+    else
+    {
+        h=h1;
+        h1=h1->next;
+    }
+    Node *T=h;
+    while(h1->next!=NULL&&h2->next!=NULL)
+    {
+       if(h1->data>=h2->data)
+       {
+           T->next=h2;
+           h2=h2->next;
+           T = T->next;
+       }
+       else{
+           T->next=h1;
+           h1=h1->next;
+           T = T->next;
+       }
+    }
+    if(h1==NULL&& h2==NULL)
+    {
+       if(h1->data<=h2->data)
+       {
+           T->next=h1;
+           h1->next=h2;
+       }
+       else
+       {
+            T->next=h2;
+           h2->next=h1;
+       }
+    }
+    else if(h1==NULL)
+    {
+      if(h1->data<=h2->data)
+      {
+          T->next=h1;
+          h1->next=h2;
+      }
+      else{
+          int t=1;
+          while(h2->next!=NULL)
+          {
+              if(h1->data>=h2->data)
+              {
+                  h2=h2->next;
+                  T=T->next;
+              }
+              else
+              {
+                  T->next=h1;
+                  h1->next=h2;
+                  t=-1;
+              }
+          }
+          if(t!=-1)
+          {
+              T->next = h1;
+          }
+      }
+    }
+    else{
+          if(h1->data>=h2->data)
+      {
+          T->next=h2;
+          h2->next=h1;
+      }
+      else{
+          int t=1;
+          while(h1->next!=NULL)
+          {
+              if(h1->data<=h2->data)
+              {
+                  h1=h1->next;
+                  T=T->next;
+              }
+              else
+              {
+                  T->next=h2;
+                  h2->next=h1;
+                  t=-1;
+              }
+          }
+          if(t!=-1)
+          {
+              T->next = h2;
+          }
+      }
+
+    }
+    return h;
+}
+Node *mergeSort(Node *head)
+{
+int c=1;
+  Node *T=head;
+  while(T->next!=NULL)
+  {
+      c++;
+      T=T->next;
+  }
+  int mid = (c-1)/2;
+  if(mid>0)
+  {
+      Node *h=head;
+      while(mid!=0)
+      {
+          h=h->next;
+          mid--;
+      }
+      Node *X=h->next;
+      h->next=NULL;
+     Node *A= mergeSort(head);
+    Node *B = mergeSort(X);
+    Node  *p=mergeLL(A,B);
+    return p;
+
+  }
+  else
+    return head;
+
+}
+int main()
+{
+   cout<<"Enter the LL:";
+   Node *h =takeInput();
+   print(h);
+  Node *H= mergeSort(h);
+   print(H);
+   return 0;
+
+}
