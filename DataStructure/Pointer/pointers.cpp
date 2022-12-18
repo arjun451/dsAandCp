@@ -3,6 +3,9 @@ using namespace std;
 int main()
 {
   int i;
-  cout<<&i;
-    return 0;
+  cout<<&i<<endl;
+  int *p = &i;
+  cout<<p<<endl;
+  
+  return 0;
 }

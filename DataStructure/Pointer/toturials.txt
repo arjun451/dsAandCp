@@ -1,0 +1,5 @@
+                                    ***Pointers****
+
+Pointers are nothing its a variable that store the address of others variables.
+
+    
