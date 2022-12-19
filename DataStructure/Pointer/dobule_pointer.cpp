@@ -1,5 +1,17 @@
 #include<iostream>
 using namespace std;
+void increment1(int **p)
+{
+    p=p+1;
+}
+void increment2(int **p)
+{
+    *p=*p+1;
+}
+void increment3(int **p)
+{
+    **p=**p+1;
+}
 int main()
 {
    int i = 10;
@@ -11,6 +23,11 @@ int main()
    cout<<p2<<endl;
    cout<<*p2<<endl;
    cout<<&p2<<endl;
+
+    //accessing pointer
+    cout<<i<<endl;
+    cout<<*p<<endl;
+    cout<<**p2<<endl;
 
 
 
