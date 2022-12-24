@@ -3,7 +3,16 @@ using namespace std;
 #include "student.cpp"
 int main()
 {
-	Student s1(20);
+
+	//copy constructor
+	Student s1(1,20);
+	Student s2(s1);
+	s1.display();
+	s2.display();
+	Student *s3 = new Student(s1);
+	s3->display();
+
+/*	Student s1(20);
 	cout<<"address of s1: "<<&s1<<endl;
 //	s1.setAge(24);
 	s1.rollnum = 1;
@@ -17,5 +26,6 @@ int main()
 	s4->rollnum=2;
 	 cout<<"s4.age=>"<<(*s4).getAge()<<" s4.rollnum=> " <<s4->rollnum<<endl;
       //   s4->display();
+      */
 }
 
