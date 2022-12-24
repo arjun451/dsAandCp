@@ -4,6 +4,20 @@ using namespace std;
 int main()
 {
 
+	//copy assignment operator
+	Student s1(1,20);
+	Student s2(2,25);
+	     s1=s2;
+        Student *s3 = new Student(3,22);
+	Student s4(*s3);
+	Student *s5 = new Student(*s3);
+	Student *s6 = new Student(s2);
+	s1.display();
+	s2.display();
+	s6->display();
+	s4.display();
+	s5->display();
+	/*
 	//copy constructor
 	Student s1(1,20);
 	Student s2(s1);
@@ -11,6 +25,7 @@ int main()
 	s2.display();
 	Student *s3 = new Student(s1);
 	s3->display();
+	*/
 
 /*	Student s1(20);
 	cout<<"address of s1: "<<&s1<<endl;
