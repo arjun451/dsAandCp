@@ -17,6 +17,9 @@ int main()
 	s6->display();
 	s4.display();
 	s5->display();
+	delete s3;
+	delete s5;
+	delete s6;
 	/*
 	//copy constructor
 	Student s1(1,20);

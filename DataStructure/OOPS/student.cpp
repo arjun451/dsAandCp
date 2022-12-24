@@ -10,7 +10,11 @@ class Student{
 		{
 			cout<<"Default constructor called!"<<endl;
 		}
-       
+                //Destructor
+		~Student()
+		{
+			cout<<"destructor called!!"<<endl;
+		}
 		//parameterised constructor
 		Student(int age)
 		{
